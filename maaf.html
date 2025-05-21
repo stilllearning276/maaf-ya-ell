@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Permintaan Maaf untuk Ell</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Pacifico&family=Quicksand&display=swap');
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: linear-gradient(135deg, #f78da7, #ffb6c1);
+            font-family: 'Quicksand', sans-serif;
+            margin: 0;
+            overflow: hidden;
+            animation: backgroundMove 10s infinite alternate;
+        }
+
+        @keyframes backgroundMove {
+            0% { background-position: left; }
+            100% { background-position: right; }
+        }
+
+        .container {
+            text-align: center;
+            background: #fff0f5;
+            padding: 40px;
+            border-radius: 25px;
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+            max-width: 500px;
+            animation: fadeIn 2s ease-in;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: scale(0.9); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        h1 {
+            color: #d63384;
+            font-family: 'Pacifico', cursive;
+            font-size: 32px;
+        }
+
+        .emoji {
+            font-size: 48px;
+            margin: 15px 0;
+            animation: bounce 1.2s infinite;
+        }
+
+        button {
+            background-color: #ff69b4;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 30px;
+            cursor: pointer;
+            font-size: 18px;
+            margin: 10px 5px;
+            transition: all 0.3s ease-in-out;
+        }
+
+        button:hover {
+            background-color: #ff1493;
+            transform: scale(1.05);
+        }
+
+        select {
+            padding: 12px;
+            border-radius: 20px;
+            border: 1px solid #ccc;
+            font-size: 16px;
+            margin-top: 10px;
+            background-color: #fff;
+        }
+
+        .flower {
+            position: absolute;
+            width: 80px;
+            height: auto;
+            pointer-events: none;
+            transition: transform 2s ease-in-out, opacity 2s ease-in-out;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+            40% { transform: translateY(-20px); }
+            60% { transform: translateY(-10px); }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="emoji">🥺🙏🌸</div>
+        <h1>Maaf ya Ell, mas sayang banget sama kamu 😢💖</h1>
+        <button onclick="mintaMaaf()">Maaf ya cantikk 😔</button>
+        <button onclick="kirimBunga()">Bunga untuk Ell 🌷</button>
+        <br><br>
+        <label for="alasan">Apa yang harus mas lakukan supaya Ell mau maafin mas? 🥺</label><br>
+<select id="alasan" onchange="kirimPesanWhatsApp()">
+    <option value="">-- Pilih tindakan --</option>
+    <option value="Beliin seblak">Beliin seblak</option>
+    <option value="Ketik minta maaf 100 kali">Ketik minta maaf 100 kali</option>
+    <option value="Nemenin ell call seharian pas libur">Nemenin ell call seharian pas libur</option>
+    <option value="Ell bebas minta apapun">Ell bebas minta apapun</option>
+</select>
+
+        <div class="emoji">💖 Jangan ngambek lagi yaa cantikk 🥺</div>
+        <button onclick="ucapkanSelamat()">AKUU MAUU ELL BAHAGIA SELALUU 💕</button>
+    </div>
+
+    <script>
+        function mintaMaaf() {
+            const alasan = document.getElementById('alasan').value;
+            alert(`Aku minta maaf, aku salah banget. ${alasan} asalkan kamu mau maafin aku yaa? 😢❤️`);
+        }
+
+        function kirimBunga() {
+            for (let i = 0; i < 15; i++) {
+                let flower = document.createElement('img');
+                flower.src = 'https://png.pngtree.com/png-clipart/20220206/original/pngtree-d-love-bucket-set-or-valentine-for-s-day-karangan-bunga-png-image_7263451.png';
+                flower.classList.add('flower');
+                document.body.appendChild(flower);
+
+                flower.style.left = Math.random() * window.innerWidth + 'px';
+                flower.style.top = Math.random() * window.innerHeight + 'px';
+
+                setTimeout(() => {
+                    flower.style.transform = 'scale(1.5) rotate(360deg)';
+                    flower.style.opacity = '0';
+                }, 3000);
+
+                setTimeout(() => {
+                    flower.remove();
+                }, 5000);
+            }
+        }
+function kirimPesanWhatsApp() {
+    const alasan = document.getElementById('alasan').value;
+    if (alasan !== "") {
+        const pesan = `Haii Ell, aku sadar aku salah. Aku janji akan ${alasan.toLowerCase()} demi kamu mau maafin aku yaa 🥺❤️`;
+        const url = `https://wa.me/6285718993124?text=${encodeURIComponent(pesan)}`;
+        window.open(url, '_blank');
+    }
+}
+
+        function ucapkanSelamat() {
+            alert("AKUUU MAUU ELL BAHAGIA SELALUU! 💖");
+            kirimBunga();
+        }
+    </script>
+</body>
+</html>
